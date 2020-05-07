@@ -67,8 +67,31 @@ function changeKey(arr){
     high.innerHTML = `Greater than ${arr[2]}`
 }
 
+function posPercent(state){
+    let denom = statePop[state.state] * 10 ** 3
+    return (state.positive/denom).toFixed(2)
+}
+
+function deadPercent(state){
+    let denom = statePop[state.state] * 10 ** 3
+    return (state.death/denom).toFixed(2)
+}
+
+function deadPosPercent(state){
+    return (100 * state.death/state.positive).toFixed(2)
+}
+
 function addInfo(state, obj){
-    obj.setAttribute("info", `<div>State: ${state.state}</div><div>Cases: ${state.positive}</div><div>Deaths: ${state.death}</div>`)
+    let percent = posPercent(state)
+    console.log(percent)
+    let dPercent = deadPercent(state)
+    let dpPercent = deadPosPercent(state)
+    obj.setAttribute("info", `<div>State: ${state.state}</div>
+    <div>Cases: ${state.positive}</div>
+    <div>Deaths: ${state.death}</div>
+    <div>Positive Percent of Pop: ${percent}%</div>
+    <div>Death Percent of Pop: ${dPercent}%</div>
+    <div>Death Rate of Infection: ${dpPercent}%</div>`)
     obj.addEventListener("mouseover", (e)=> {
         let x = e.clientX
         let y = e.clientY
@@ -80,7 +103,7 @@ function displayBox(obj, x, y){
     let box = document.getElementById("info-box")
     box.innerHTML = obj.getAttribute("info")
     box.style.display ="block"
-    box.style.top = y + 100 +'px'
+    box.style.top = y + 50 +'px'
     box.style.left = x+'px'
 
 }
