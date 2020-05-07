@@ -15,16 +15,16 @@ function LoadData () {
 
 function colorState(obj, num){
     if (num <= 150) {
-        obj.style.fill = "green"
+        obj.style.fill = "#a68280"
     }
     else if (num <= 250){
-        obj.style.fill = "blue"
+        obj.style.fill = "#7d4845"
     }
     else if (num <= 400){
-        obj.style.fill = "yellow"
+        obj.style.fill = "#782f2a"
     }
     else {
-        obj.style.fill = "red"
+        obj.style.fill = "#8a0c03"
     }
 }
 
