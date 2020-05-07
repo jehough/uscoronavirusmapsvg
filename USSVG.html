@@ -25,11 +25,11 @@
 -->
       <div class="selection-box">
          <label for="show">Choose a model to show:</label>
-         <select id="show">
-            <option onselect="LoadPositives()">Total Positive Cases</option>
-            <option onselect="LoadData()">Positives per 100K</option>
-            <option onselect="LoadDeaths()">Total Deaths</option>
-            <option onselect="LoadDeathPer()">Deaths per 100k</option>
+         <select id="show" onchange="selection()">
+            <option value="Positives">Total Positive Cases</option>
+            <option value="PerCapita">Positives per 100K</option>
+            <option value="Deaths">Total Deaths</option>
+            <option value="DeathsPerCapita">Deaths per 100k</option>
          </select>
       </div>
       <svg

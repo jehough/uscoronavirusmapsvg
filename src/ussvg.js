@@ -13,8 +13,33 @@ function LoadData () {
         .catch(error => console.log('error', error));
 }
 
+function selection(){
+    const e = document.getElementById("show").value;
+    switch(e){
+        case "Positives":
+            LoadPopulation()
+            break;
+        case "PerCapita":
+            LoadData()
+            break;
+        case "Deaths":
+            LoadDeaths()
+            break;
+        case "DeathsPerCapita":
+            LoadDCP();
+    }
+}
+
 function LoadPopulation(){
     console.log("a")
+}
+
+function LoadDeaths(){
+    console.log("c")
+}
+
+function LoadDCP(){
+    console.log("b")
 }
 function colorState(obj, num){
     if (num <= 150) {
