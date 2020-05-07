@@ -2,10 +2,10 @@ const statePop = { 'AL': 49.03, 'AK': 7.31, 'AS': 0.55, 'AZ': 72.78, 'AR': 30.17
 const posarr = [5000, 10000, 20000]
 const pcarr = [150,250,400]
 const darr = [500,1000,2500]
-const dcparr = [20, 60, 80]
+const dcparr = [20, 40, 70]
 
 function InitialLoad () {
-    let value = "PerCapita"
+    let value = "Positives"
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -56,24 +56,38 @@ function divideByPop(num, state){
     
 }
 
+function changeKey(arr){
+    let low = document.getElementById('lowLabel')
+    let midlow = document.getElementById('midlowLabel')
+    let midhigh = document.getElementById('midhighLabel')
+    let high = document.getElementById('highLabel')
+    low.innerHTML = `Less than ${arr[0]}`
+    midlow.innerHTML = `${arr[0]+1} - ${arr[1]}`
+    midhigh.innerHTML = `${arr[1]+1} - ${arr[2]}`
+    high.innerHTML = `Greater than ${arr[2]}`
+}
+
 function getStateData(json, value){
-    console.log(json)
     for(const state of json){
         let obj = document.getElementById(state.state)
         switch(value){
             case "Positives":
                 !!obj ? colorState(obj, state.positive, posarr):null
+                changeKey(posarr)
                 break;
             case "PerCapita":
                 let num = divideByPop(state.positive, state.state)
                 !!obj ? colorState(obj, num, pcarr): null;
+                changeKey(pcarr)
                 break;
             case "Deaths":
                 !!obj ? colorState(obj, state.death, darr):null;
+                changeKey(darr)
                 break;
             case "DeathsPerCapita":
                 let dcpval = divideByPop(state.death, state.state)
                 !!obj ? colorState(obj, dcpval, dcparr):null
+                changeKey(dcparr)
         }
     }
 }

@@ -23,6 +23,7 @@
 ************* Free for Commercial Use, full terms at  http://simplemaps.com/resources/svg-license ************
 ************* Attribution is appreciated! http://simplemaps.com ***************************
 -->
+
       <div class="selection-box">
          <label for="show">Choose a model to show:</label>
          <select id="show" onchange="selection()">
@@ -32,6 +33,31 @@
             <option value="DeathsPerCapita">Deaths per 100k</option>
          </select>
       </div>
+
+      <div class="svgkey">
+         
+         <svg id="low" width="20" height="20">
+            <rect width="20" height="20" style="fill: #a68280" />
+         </svg>
+         <label for="low" id="lowLabel">Less Than 5000</label>
+         <br>
+         <svg id="midlow" width="20" height="20">
+            <rect width="20" height="20" style="fill: #7d4845" />
+         </svg>
+         <label for="midlow" id="midlowLabel">5001 - 10000</label>
+         <br>
+         <svg id="midhigh" width="20" height="20">
+            <rect width="20" height="20" style="fill: #782f2a" />
+         </svg>
+         <label for="midhigh" id="midhighLabel">10001 - 20000</label>
+         <br>
+         <svg id="high" width="20" height="20">
+            <rect width="20" height="20" style="fill: #8a0c03" />
+         </svg>
+         <label for="high" id="highLabel">Greater than 20000</label>
+         
+      </div>
+
       <svg
          xmlns:dc="http://purl.org/dc/elements/1.1/"
          xmlns:cc="http://creativecommons.org/ns#"
