@@ -1,8 +1,6 @@
 #info-box {
     display: none;
     position: absolute;
-    top: 0px;
-    left: 0px;
     z-index: 1;
     background-color: #ffffff;
     border: 2px solid #BF0A30;

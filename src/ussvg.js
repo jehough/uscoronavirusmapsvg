@@ -69,12 +69,31 @@ function changeKey(arr){
 
 function addInfo(state, obj){
     obj.setAttribute("info", `<div>State: ${state.state}</div><div>Cases: ${state.positive}</div><div>Deaths: ${state.death}</div>`)
+    obj.addEventListener("mouseover", (e)=> {
+        let x = e.clientX
+        let y = e.clientY
+        displayBox(obj, x, y)})
+    obj.addEventListener("mouseout", ()=> hideBox())
+}
+
+function displayBox(obj, x, y){
+    let box = document.getElementById("info-box")
+    box.innerHTML = obj.getAttribute("info")
+    box.style.display ="block"
+    box.style.top = y + 100 +'px'
+    box.style.left = x+'px'
+
+}
+
+function hideBox(){
+    let box = document.getElementById('info-box')
+    box.style.display = "none"
 }
 
 function getStateData(json, value){
     for(const state of json){
         let obj = document.getElementById(state.state)
-        addInfo(state, obj)
+        !!obj ? addInfo(state, obj):null
         switch(value){
             case "Positives":
                 !!obj ? colorState(obj, state.positive, posarr):null
