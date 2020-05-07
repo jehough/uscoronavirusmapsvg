@@ -67,9 +67,14 @@ function changeKey(arr){
     high.innerHTML = `Greater than ${arr[2]}`
 }
 
+function addInfo(state, obj){
+    obj.setAttribute("info", `<div>State: ${state.state}</div><div>Cases: ${state.positive}</div><div>Deaths: ${state.death}</div>`)
+}
+
 function getStateData(json, value){
     for(const state of json){
         let obj = document.getElementById(state.state)
+        addInfo(state, obj)
         switch(value){
             case "Positives":
                 !!obj ? colorState(obj, state.positive, posarr):null
