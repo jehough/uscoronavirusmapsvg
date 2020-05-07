@@ -13,6 +13,9 @@ function LoadData () {
         .catch(error => console.log('error', error));
 }
 
+function LoadPopulation(){
+    console.log("a")
+}
 function colorState(obj, num){
     if (num <= 150) {
         obj.style.fill = "#a68280"

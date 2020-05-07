@@ -23,7 +23,15 @@
 ************* Free for Commercial Use, full terms at  http://simplemaps.com/resources/svg-license ************
 ************* Attribution is appreciated! http://simplemaps.com ***************************
 -->
-
+      <div class="selection-box">
+         <label for="show">Choose a model to show:</label>
+         <select id="show">
+            <option onselect="LoadPositives()">Total Positive Cases</option>
+            <option onselect="LoadData()">Positives per 100K</option>
+            <option onselect="LoadDeaths()">Total Deaths</option>
+            <option onselect="LoadDeathPer()">Deaths per 100k</option>
+         </select>
+      </div>
       <svg
          xmlns:dc="http://purl.org/dc/elements/1.1/"
          xmlns:cc="http://creativecommons.org/ns#"
