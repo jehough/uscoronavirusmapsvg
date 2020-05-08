@@ -3,6 +3,7 @@ const posarr = [5000, 10000, 20000]
 const pcarr = [150,250,400]
 const darr = [500,1000,2500]
 const dcparr = [20, 40, 70]
+const testarr = [2000, 3000, 4000]
 
 function InitialLoad () {
     let value = "Positives"
@@ -83,12 +84,12 @@ function deadPosPercent(state){
 
 function addInfo(state, obj){
     let percent = posPercent(state)
-    console.log(percent)
     let dPercent = deadPercent(state)
     let dpPercent = deadPosPercent(state)
     obj.setAttribute("info", `<div>State: ${state.state}</div>
     <div>Cases: ${state.positive}</div>
     <div>Deaths: ${state.death}</div>
+    <div>Tests Administered: ${state.total}</div>
     <div>Positive Percent of Pop: ${percent}%</div>
     <div>Death Percent of Pop: ${dPercent}%</div>
     <div>Death Rate of Infection: ${dpPercent}%</div>`)
@@ -105,7 +106,6 @@ function displayBox(obj, x, y){
     box.style.display ="block"
     box.style.top = y + 50 +'px'
     box.style.left = x+'px'
-
 }
 
 function hideBox(){
@@ -114,6 +114,7 @@ function hideBox(){
 }
 
 function getStateData(json, value){
+    console.log(json)
     for(const state of json){
         let obj = document.getElementById(state.state)
         !!obj ? addInfo(state, obj):null
@@ -135,6 +136,11 @@ function getStateData(json, value){
                 let dcpval = divideByPop(state.death, state.state)
                 !!obj ? colorState(obj, dcpval, dcparr):null
                 changeKey(dcparr)
+                break;
+            case "TestsPerCapita":
+                let testval = divideByPop(state.total, state.state)
+                !!obj ? colorState(obj, testval, testarr):null
+                changeKey(testarr)
         }
     }
 }
